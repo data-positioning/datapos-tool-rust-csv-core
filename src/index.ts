@@ -79,7 +79,7 @@ class Tool {
         try {
             console.log(3333);
             await stream_csv(stream, progressCallback, delimiter, hasHeaders);
-
+            console.log(4444);
             return {
                 processedRowCount,
                 failedRowCount: 0,
