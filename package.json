@@ -1,6 +1,6 @@
 {
     "name": "@datapos/datapos-tool-rust-csv-core",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "CSV parser tool with Rust/WASM core for high-performance streaming",
     "license": "MIT",
     "private": false,
@@ -14,11 +14,11 @@
         "url": "https://github.com/data-positioning/datapos-tool-rust-csv-core/issues"
     },
     "module": "./dist/datapos-tool-rust-csv-core.es.js",
-    "types": "./dist/types/src/index.d.ts",
+    "types": "./dist/types/index.d.ts",
     "exports": {
         ".": {
             "import": "./dist/datapos-tool-rust-csv-core.es.js",
-            "types": "./dist/types/src/index.d.ts"
+            "types": "./dist/types/index.d.ts"
         }
     },
     "files": [
