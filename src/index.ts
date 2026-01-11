@@ -62,7 +62,9 @@ class Tool {
         options: CsvProcessingOptions = {},
         onProgress?: (rowCount: number) => void
     ): Promise<CsvProcessingSummary> {
+        console.log(1111);
         const { stream_csv } = await loadRustBindings();
+        console.log(2222);
         const delimiter = options.delimiter?.charCodeAt(0) ?? 44; // Default comma
         const hasHeaders = options.hasHeaders ?? true;
 
@@ -75,6 +77,7 @@ class Tool {
         };
 
         try {
+            console.log(3333);
             await stream_csv(stream, progressCallback, delimiter, hasHeaders);
 
             return {
