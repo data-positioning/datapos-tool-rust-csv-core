@@ -1,6 +1,6 @@
 {
     "name": "@datapos/datapos-tool-rust-csv-core",
-    "version": "0.1.8",
+    "version": "0.1.9",
     "description": "CSV parser tool with Rust/WASM core for high-performance streaming",
     "license": "MIT",
     "private": false,
