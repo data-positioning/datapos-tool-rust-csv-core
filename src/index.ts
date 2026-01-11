@@ -1,6 +1,6 @@
 /**
  * CSV Core Tool with Rust/WASM processing.
- * 
+ *
  * Provides high-performance CSV parsing with two modes:
  * - Stream mode: For browsers supporting transferable ReadableStreams (Chromium)
  * - Chunk mode: For browsers without transferable stream support (Safari)
@@ -76,29 +76,21 @@ class Tool {
 
         try {
             await stream_csv(stream, progressCallback, delimiter, hasHeaders);
-            
+
             return {
                 processedRowCount,
                 failedRowCount: 0,
                 durationMs: performance.now() - startTime
             };
         } catch (error) {
-            throw new OperationalError(
-                'Failed to process CSV stream.',
-                'datapos-tool-rust-csv-core|Tool|processWithTransferableStream',
-                { cause: error }
-            );
+            throw new OperationalError('Failed to process CSV stream.', 'datapos-tool-rust-csv-core|Tool|processWithTransferableStream', { cause: error });
         }
     }
 
     /**
      * Process CSV data using chunk-by-chunk approach (Safari fallback).
      */
-    async processWithChunks(
-        stream: ReadableStream<Uint8Array>,
-        options: CsvProcessingOptions = {},
-        onProgress?: (rowCount: number) => void
-    ): Promise<CsvProcessingSummary> {
+    async processWithChunks(stream: ReadableStream<Uint8Array>, options: CsvProcessingOptions = {}, onProgress?: (rowCount: number) => void): Promise<CsvProcessingSummary> {
         const { CsvSession } = await loadRustBindings();
         const delimiter = options.delimiter?.charCodeAt(0) ?? 44;
         const hasHeaders = options.hasHeaders ?? true;
@@ -109,13 +101,13 @@ class Tool {
 
         try {
             const reader = stream.getReader();
-            
+
             try {
                 // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 while (true) {
                     const { value, done } = await reader.read();
                     if (done) break;
-                    
+
                     if (value) {
                         const rows = session.pushChunk(value);
                         const count = Array.isArray(rows) ? rows.length : 0;
@@ -139,11 +131,7 @@ class Tool {
                 reader.releaseLock();
             }
         } catch (error) {
-            throw new OperationalError(
-                'Failed to process CSV chunks.',
-                'datapos-tool-rust-csv-core|Tool|processWithChunks',
-                { cause: error }
-            );
+            throw new OperationalError('Failed to process CSV chunks.', 'datapos-tool-rust-csv-core|Tool|processWithChunks', { cause: error });
         }
     }
 }

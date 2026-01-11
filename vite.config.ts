@@ -3,9 +3,13 @@
  */
 
 // Vendor dependencies.
-import { defineConfig } from 'vite';
+import { defineConfig, type PluginOption } from 'vite';
 import dts from 'vite-plugin-dts';
+import wasm from 'vite-plugin-wasm';
 import { fileURLToPath, URL } from 'node:url';
+
+// Initialisation.
+const wasmPlugin = wasm() as PluginOption;
 
 // Exports.
 export default defineConfig({
@@ -20,7 +24,7 @@ export default defineConfig({
         },
         target: 'ESNext'
     },
-    plugins: [dts({ outDir: 'dist/types' })],
+    plugins: [dts({ outDir: 'dist/types' }), wasmPlugin],
     resolve: {
         alias: {
             '~': fileURLToPath(new URL('./', import.meta.url)),
