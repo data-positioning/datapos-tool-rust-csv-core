@@ -64,7 +64,9 @@ class Tool {
     ): Promise<CsvProcessingSummary> {
         console.log(1111, stream, options);
         const xxxx = await loadRustBindings();
-        console.log('xxxx', xxxx, xxxx.default, xxxx.stream_csv);
+        console.log('xxxx1', xxxx);
+        console.log('xxxx2', xxxx.default);
+        console.log('xxxx3', xxxx.stream_csv);
         console.log(2222);
         const delimiter = options.delimiter?.charCodeAt(0) ?? 44; // Default comma
         const hasHeaders = options.hasHeaders ?? true;
