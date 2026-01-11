@@ -1,6 +1,6 @@
 {
     "name": "@datapos/datapos-tool-rust-csv-core",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "description": "CSV parser tool with Rust/WASM core for high-performance streaming",
     "license": "MIT",
     "private": false,
@@ -26,12 +26,13 @@
     ],
     "prettier": "@datapos/datapos-development/prettierrc",
     "dependencies": {
-        "@datapos/datapos-shared": "^0.3.511"
+        "@datapos/datapos-shared": "^0.3.512",
+        "npm-check-updates": "^19.3.1"
     },
     "devDependencies": {
         "@datapos/datapos-development": "^0.3.438",
         "@datapos/eslint-config-datapos": "^1.0.40",
-        "@types/node": "^25.0.5",
+        "@types/node": "^25.0.6",
         "@typescript-eslint/eslint-plugin": "^8.52.0",
         "@typescript-eslint/parser": "^8.52.0",
         "eslint": "^9.39.2",
@@ -43,6 +44,7 @@
     },
     "scripts": {
         "build": "npm run build:wasm && npx vite build",
+        "check": "node -e \"import('@datapos/datapos-development').then(m => m.checkDependencies())\"",
         "build:wasm": "wasm-pack build rust/datapos_tool_rust_csv_core --target web --release",
         "format": "node -e \"import('@datapos/datapos-development').then(m => m.formatCode())\"",
         "lint": "node -e \"import('@datapos/datapos-development').then(m => m.lintCode())\"",
