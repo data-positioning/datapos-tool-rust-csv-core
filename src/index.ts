@@ -146,7 +146,12 @@ class Tool {
  * Load Rust bindings lazily.
  */
 async function loadRustBindings(): Promise<RustBindings> {
-    rustBindingsPromise ??= import('../rust/datapos_tool_rust_csv_core/pkg/datapos_tool_rust_csv_core.js');
+    if (!rustBindingsPromise) {
+        rustBindingsPromise = import('../rust/datapos_tool_rust_csv_core/pkg/datapos_tool_rust_csv_core.js').then(async (module) => {
+            await module.default();
+            return module;
+        });
+    }
     return rustBindingsPromise;
 }
 
