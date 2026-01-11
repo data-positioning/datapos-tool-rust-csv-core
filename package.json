@@ -1,0 +1,51 @@
+{
+    "name": "@datapos/datapos-tool-rust-csv-core",
+    "version": "0.1.1",
+    "description": "CSV parser tool with Rust/WASM core for high-performance streaming",
+    "license": "MIT",
+    "private": false,
+    "type": "module",
+    "homepage": "https://www.datapos.app",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/data-positioning/datapos-tool-rust-csv-core.git"
+    },
+    "bugs": {
+        "url": "https://github.com/data-positioning/datapos-tool-rust-csv-core/issues"
+    },
+    "module": "./dist/datapos-tool-rust-csv-core.es.js",
+    "types": "./dist/types/src/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/datapos-tool-rust-csv-core.es.js",
+            "types": "./dist/types/src/index.d.ts"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "prettier": "@datapos/datapos-development/prettierrc",
+    "dependencies": {
+        "@datapos/datapos-shared": "^0.3.511"
+    },
+    "devDependencies": {
+        "@datapos/datapos-development": "^0.3.438",
+        "@datapos/eslint-config-datapos": "^1.0.40",
+        "@types/node": "^25.0.5",
+        "@typescript-eslint/eslint-plugin": "^8.52.0",
+        "@typescript-eslint/parser": "^8.52.0",
+        "eslint": "^9.39.2",
+        "prettier": "^3.7.4",
+        "typescript": "^5.9.3",
+        "vite": "^7.3.1",
+        "vite-plugin-dts": "^4.5.4"
+    },
+    "scripts": {
+        "build": "npm run build:wasm && npx vite build",
+        "build:wasm": "wasm-pack build rust/datapos_tool_rust_csv_core --target web --release",
+        "format": "node -e \"import('@datapos/datapos-development').then(m => m.formatCode())\"",
+        "lint": "node -e \"import('@datapos/datapos-development').then(m => m.lintCode())\"",
+        "release": "op run --env-file=.env -- node -e \"import('@datapos/datapos-development').then(m => m.releaseProject())\"",
+        "sync": "node -e \"import('@datapos/datapos-development').then(m => m.syncProjectWithGitHub())\""
+    }
+}

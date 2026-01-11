@@ -1,0 +1,12 @@
+{
+    "id": "datapos-tool-rust-csv-core",
+    "label": {
+        "en-gb": "Rust CSV core"
+    },
+    "description": {
+        "en-gb": "..."
+    },
+    "statusId": "alpha",
+    "typeId": "tool",
+    "version": "0.1.1"
+}

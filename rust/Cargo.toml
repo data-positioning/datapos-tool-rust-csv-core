@@ -1,0 +1,3 @@
+[workspace]
+members = ["datapos_tool_rust_csv_core"]
+resolver = "2"

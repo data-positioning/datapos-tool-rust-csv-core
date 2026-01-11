@@ -1,0 +1,22 @@
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+
+# Rust build artifacts
+rust/*/pkg
+rust/*/target
+rust/target
+**/Cargo.lock
+
+# Environment files
+.env
+.env.local
+
+# System files
+.DS_Store
+**/.DS_Store
+
+# Logs
+*.log
