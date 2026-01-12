@@ -155,5 +155,5 @@ async function loadRustBindings(): Promise<RustBindings> {
     return rustBindingsPromise;
 }
 
-// Exports.
+// Exposures.
 export { Tool };

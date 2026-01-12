@@ -11,7 +11,7 @@ import { fileURLToPath, URL } from 'node:url';
 // Initialisation.
 const wasmPlugin = wasm() as PluginOption;
 
-// Exports.
+// Exposures.
 export default defineConfig({
     build: {
         lib: {
